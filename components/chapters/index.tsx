@@ -1,6 +1,5 @@
 "use client";
 
-import { useSession } from "next-auth/react";
 import ChapterList from "./chapter-list";
 
 export interface IChapter {

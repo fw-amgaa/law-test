@@ -1,7 +1,6 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import React, { useState } from "react";
+import { useState } from "react";
 import Question from "./question";
 import Result from "./result";
 
