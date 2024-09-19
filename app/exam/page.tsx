@@ -18,7 +18,5 @@ export default async function ExamPage({
     session.user.token
   );
 
-  console.log("questions", questions.data[0].answer_list);
-
-  return <Exam questionList={questions.data} />;
+  return <Exam questionList={questions?.data || []} />;
 }

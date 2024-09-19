@@ -25,7 +25,6 @@ export default function LoginForm() {
         const response = await login(e);
 
         if (response?.error) {
-          console.log("response", response.error);
           toast({
             title: "Error",
             variant: "destructive",
@@ -59,6 +58,11 @@ export default function LoginForm() {
             <Label htmlFor="password">Password</Label>
             <Input id="password" type="password" name="password" required />
           </div>
+
+          <p className="text-sm text-gray-400">
+            Note: Please refresh the page after login. Sorry for the
+            inconvenience
+          </p>
         </CardContent>
         <CardFooter>
           <Button type="submit" className="w-full">

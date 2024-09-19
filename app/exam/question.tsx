@@ -9,6 +9,7 @@ import {
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { IAnswer, IQuestion } from "./exam";
+import { useRouter } from "next/navigation";
 
 interface Props {
   question: IQuestion;
@@ -16,6 +17,7 @@ interface Props {
 }
 
 export default function Question({ question, onClickNext }: Props) {
+  const router = useRouter();
   const [selectedAnswer, setSelectedAnswer] = useState<IAnswer | null>(null);
   const [selectedCorrectAnswer, setSelectedCorrectAnswer] =
     useState<IAnswer | null>(null);
@@ -27,6 +29,11 @@ export default function Question({ question, onClickNext }: Props) {
     setSelectedCorrectAnswer(null);
     setSelectedWrongAnswer(null);
   }, [question]);
+
+  if (!question) {
+    router.push("/login");
+    return <div>error</div>;
+  }
 
   const onPressAnswer = (answer: IAnswer) => {
     if (selectedAnswer) return;
