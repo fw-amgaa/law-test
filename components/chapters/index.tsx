@@ -22,7 +22,7 @@ export default function Chapters({ chapters }: { chapters: IChapter[] }) {
           Chapter List
         </h2>
         <p className="text-base text-gray-700 md:text-lg">
-          Multiple choice questions and answers
+          Select a chapter to start taking the exam. Good luck!
         </p>
       </div>
       <ChapterList chapters={chapters} />
