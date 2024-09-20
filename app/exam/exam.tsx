@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Question from "./question";
-import Result from "./result";
+import { ResultComponent } from "./result";
 
 export interface IAnswer {
   id: number;
@@ -47,7 +47,7 @@ export default function Exam({ questionList }: Props) {
   return (
     <div className="text-black flex flex-col w-full h-full items-center justify-center">
       {showResult ? (
-        <Result
+        <ResultComponent
           correctAnswerCount={correctQuestionCount}
           totalQuestions={questionList.length}
         />
