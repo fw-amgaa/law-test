@@ -18,7 +18,7 @@ interface IChapter {
 
 interface ChapterNodeProps {
   chapter: IChapter;
-  children: IChapter[];
+  childChapters: IChapter[];
   onSelect: (chapter: IChapter) => void;
   selectedChapter: IChapter | null;
   chapterTree: { [key: number]: IChapter[] };
@@ -26,13 +26,13 @@ interface ChapterNodeProps {
 
 const ChapterNode: React.FC<ChapterNodeProps> = ({
   chapter,
-  children,
+  childChapters,
   onSelect,
   selectedChapter,
   chapterTree,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const hasChildren = children.length > 0;
+  const hasChildren = childChapters.length > 0;
 
   const handleClick = () => {
     if (hasChildren) {
@@ -76,15 +76,15 @@ const ChapterNode: React.FC<ChapterNodeProps> = ({
       </div>
       {isOpen && hasChildren && (
         <div className="ml-4 mt-2">
-          {children.map((child) => (
+          {childChapters.map((child) => (
             <ChapterNode
               key={child.id}
               chapter={child}
-              children={chapterTree[child.id] || []}
+              childChapters={chapterTree[child.id] || []}
               onSelect={onSelect}
               selectedChapter={selectedChapter}
               chapterTree={chapterTree}
-            />
+            ></ChapterNode>
           ))}
         </div>
       )}
@@ -116,7 +116,7 @@ export function ChapterList({
     <ChapterNode
       key={chapter.id}
       chapter={chapter}
-      children={chapterTree[chapter.id] || []}
+      childChapters={chapterTree[chapter.id] || []}
       onSelect={setSelectedChapter}
       selectedChapter={selectedChapter}
       chapterTree={chapterTree}
