@@ -110,7 +110,7 @@ export default function HomePage({ chapters }: Props) {
                 >
                   Logout
                 </Button>
-                <p className="text-success text-sm">You are logged in. </p>
+                <p className="text-black text-sm">You are logged in. </p>
               </div>
             ) : (
               <Button onClick={() => router.push("/login")} variant={"outline"}>
