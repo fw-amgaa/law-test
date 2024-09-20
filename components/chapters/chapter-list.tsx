@@ -125,7 +125,13 @@ export function ChapterList({
 
   const onClickTakeExam = () => {
     if (session?.user) {
-      router.push("/exam" + "?chapter_id=" + selectedChapter?.id);
+      router.push(
+        "/exam" +
+          "?chapter_id=" +
+          selectedChapter?.id +
+          "&chapter_name=" +
+          selectedChapter?.chapter_name
+      );
       return;
     }
 

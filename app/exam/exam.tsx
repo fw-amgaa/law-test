@@ -24,13 +24,15 @@ export interface IQuestion {
 
 interface Props {
   questionList: IQuestion[];
+  chapterName: string;
 }
 
-export default function Exam({ questionList }: Props) {
+export default function Exam({ questionList, chapterName }: Props) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [correctQuestionCount, setCorrectQuestionCount] = useState(0);
   const [showResult, setShowResult] = useState(false);
 
+  console.log(chapterName);
   const onClickNext = (isCorrect: boolean) => {
     if (isCorrect) {
       setCorrectQuestionCount((prev) => prev + 1);
@@ -53,6 +55,7 @@ export default function Exam({ questionList }: Props) {
         />
       ) : (
         <Question
+          chapterName={chapterName}
           onClickNext={onClickNext}
           question={questionList[currentQuestion]}
         />

@@ -8,6 +8,7 @@ export default async function ExamPage({
 }: {
   searchParams: {
     chapter_id: string;
+    chapter_name: string;
   };
 }) {
   const session = await auth();
@@ -18,5 +19,10 @@ export default async function ExamPage({
     session.user.token
   );
 
-  return <Exam questionList={questions?.data || []} />;
+  return (
+    <Exam
+      chapterName={searchParams.chapter_name}
+      questionList={questions?.data || []}
+    />
+  );
 }

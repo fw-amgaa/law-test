@@ -35,13 +35,13 @@ export interface IQuestion {
 interface Props {
   question: IQuestion;
   onClickNext: (isCorrect: boolean) => void;
-  chapterName?: string;
+  chapterName: string;
 }
 
 export default function Question({
   question,
   onClickNext,
-  chapterName = "Mathematics",
+  chapterName,
 }: Props) {
   const router = useRouter();
   const [selectedAnswer, setSelectedAnswer] = useState<IAnswer | null>(null);
@@ -57,8 +57,7 @@ export default function Question({
   }, [question]);
 
   if (!question) {
-    router.push("/login");
-    return <div>error</div>;
+    return <div>error fetching questions</div>;
   }
 
   const onPressAnswer = (answer: IAnswer) => {
