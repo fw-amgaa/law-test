@@ -66,7 +66,7 @@ export function ResultComponent({ correctAnswerCount, totalQuestions }: Props) {
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle className="text-3xl font-bold text-center">
-            Quiz Result
+            Тестийн хариу
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -81,15 +81,15 @@ export function ResultComponent({ correctAnswerCount, totalQuestions }: Props) {
           <div className="text-center space-y-2">
             <p className="text-xl font-semibold">{getMessage()}</p>
             <p className="text-muted-foreground">
-              You got {correctAnswerCount} out of {totalQuestions} correct
-              answers
+              Та {totalQuestions} асуултуудаас {correctAnswerCount}-г зөв
+              хариулсан байна.
             </p>
           </div>
           <div className="space-y-2">
             <div className="flex justify-between items-center">
-              <span className="text-sm font-medium">Score</span>
+              <span className="text-sm font-medium">Оноо</span>
               <Badge variant={percentage >= 60 ? "success" : "destructive"}>
-                Grade: {getGrade()}
+                Дүн: {getGrade()}
               </Badge>
             </div>
             <Progress value={progress} className="h-3" />
@@ -103,17 +103,17 @@ export function ResultComponent({ correctAnswerCount, totalQuestions }: Props) {
             transition={{ delay: 0.5 }}
             className="bg-muted p-4 rounded-lg"
           >
-            <h3 className="font-semibold mb-2">Performance Breakdown</h3>
+            <h3 className="font-semibold mb-2">Хариултын задаргаа</h3>
             <ul className="list-disc list-inside text-sm space-y-1">
-              <li>Correct Answers: {correctAnswerCount}</li>
-              <li>Incorrect Answers: {totalQuestions - correctAnswerCount}</li>
-              <li>Total Questions: {totalQuestions}</li>
+              <li>Зөв хариултууд: {correctAnswerCount}</li>
+              <li>Буруу хариултууд: {totalQuestions - correctAnswerCount}</li>
+              <li>Нийт асуултууд: {totalQuestions}</li>
             </ul>
           </motion.div>
         </CardContent>
         <CardFooter>
           <Button onClick={() => router.push("/")} className="w-full">
-            Back to Home
+            Бүлгүүд рүү буцах
           </Button>
         </CardFooter>
       </Card>

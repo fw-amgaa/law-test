@@ -71,7 +71,7 @@ const ChapterNode: React.FC<ChapterNodeProps> = ({
               onSelect(chapter);
             }}
           >
-            Select
+            Сонгох
           </button>
         )}
       </div>
@@ -152,26 +152,26 @@ export function ChapterList({
           {selectedChapter ? (
             <div>
               <h3 className="text-lg font-semibold mb-2">
-                Selected Chapter Details
+                Бүлгийн дэлгэрэнгүй
               </h3>
               <p>
-                <strong>Name:</strong> {selectedChapter.chapter_name}
+                <strong>Нэр:</strong> {selectedChapter.chapter_name}
               </p>
               <p>
-                <strong>Number:</strong> {selectedChapter.chapter_number}
+                <strong>№:</strong> {selectedChapter.chapter_number}
               </p>
               <p>
-                <strong>Description:</strong>{" "}
+                <strong>Дэлгэрэнгүй:</strong>{" "}
                 {selectedChapter.chapter_description}
               </p>
 
               <Button onClick={onClickTakeExam} className="mt-2">
-                {loading ? <Spinner /> : "Take exam"}
+                {loading ? <Spinner /> : "Шалгалт өгөх"}
               </Button>
             </div>
           ) : (
             <div className="h-full flex items-center justify-center text-muted-foreground">
-              Select a chapter to view details
+              Бүлэг сонгож дэлгэрэнгүйг харна уу.
             </div>
           )}
         </div>

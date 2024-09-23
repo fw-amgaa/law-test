@@ -31,13 +31,13 @@ export default function HomePage({ chapters, user }: Props) {
                   }}
                   variant={"destructive"}
                 >
-                  Logout
+                  Гарах
                 </Button>
-                <p className="text-black text-sm">You are logged in. </p>
+                <p className="text-black text-sm">Та нэвтэрсэн байна. </p>
               </div>
             ) : (
               <Button onClick={() => router.push("/login")} variant={"outline"}>
-                Log-in <ArrowRightIcon size={"xs"} className="ml-2" />
+                Нэвтрэх <ArrowRightIcon size={"xs"} className="ml-2" />
               </Button>
             )}
           </div>
@@ -100,52 +100,12 @@ export default function HomePage({ chapters, user }: Props) {
           <div className="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
             <div className="grid row-gap-10 mb-8 lg:grid-cols-6">
               <div className="grid grid-cols-2 gap-5 row-gap-8 lg:col-span-4 md:grid-cols-4">
-                {/* <div>
-                  <p className="font-medium tracking-wide text-gray-300">
-                    Category
-                  </p>
-                  <ul className="mt-2 space-y-2">
-                    <li>
-                      <a
-                        href="/"
-                        className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                      >
-                        News
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="/"
-                        className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                      >
-                        World
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="/"
-                        className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                      >
-                        Games
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="/"
-                        className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
-                      >
-                        References
-                      </a>
-                    </li>
-                  </ul>
-                </div> */}
-
                 <div className="space-y-2 text-sm">
                   <p className="text-base font-bold tracking-wide text-gray-100">
-                    Contacts
+                    Холбогдох
                   </p>
                   <div className="flex">
-                    <p className="mr-1 text-gray-100">Phone:</p>
+                    <p className="mr-1 text-gray-100">Утас:</p>
                     <a
                       href="tel:850-123-5021"
                       aria-label="Our phone"

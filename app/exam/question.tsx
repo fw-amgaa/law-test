@@ -12,6 +12,8 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
+import { ArrowLeft } from "lucide-react";
 
 export interface IAnswer {
   id: number;
@@ -50,6 +52,8 @@ export default function Question({
   const [selectedWrongAnswer, setSelectedWrongAnswer] =
     useState<IAnswer | null>(null);
 
+  const router = useRouter();
+
   useEffect(() => {
     setSelectedAnswer(null);
     setSelectedCorrectAnswer(null);
@@ -57,7 +61,12 @@ export default function Question({
   }, [question]);
 
   if (!question) {
-    return <div>error fetching questions</div>;
+    return (
+      <div className="flex flex-col">
+        <div className="mb-4">Та давхар орсон байна. Дахин нэвтэрнэ үү. </div>
+        <Button onClick={() => router.push("/login")}>Нэвтрэх</Button>
+      </div>
+    );
   }
 
   const onPressAnswer = (answer: IAnswer) => {
@@ -82,12 +91,21 @@ export default function Question({
         transition={{ duration: 0.5 }}
         className="mb-4 flex justify-between items-center"
       >
+        <Button
+          onClick={() => router.back()}
+          className="bg-white"
+          variant={"outline"}
+          size="sm"
+        >
+          <ArrowLeft className="mr-2" width={16} height={16} />
+          Буцах
+        </Button>
         <Badge variant="outline" className="text-sm bg-white">
-          Chapter: {chapterName}
+          Бүлэг: {chapterName}
         </Badge>
 
         <Badge variant="outline" className="text-sm bg-white">
-          Total questions: {totalQuestionsCount}
+          Нийт асуултууд: {totalQuestionsCount}
         </Badge>
       </motion.div>
       <Card className="w-full">
@@ -127,7 +145,7 @@ export default function Question({
                 className="w-full mt-4 flex flex-col sm:flex-row gap-4 justify-between items-center"
               >
                 <p className="text-sm">
-                  Your answer:{" "}
+                  Таны хариулт:{" "}
                   <span className="font-bold">
                     {selectedAnswer.answer}{" "}
                     {selectedCorrectAnswer === selectedAnswer ? "✅" : "❌"}
@@ -136,7 +154,7 @@ export default function Question({
                 <Button
                   onClick={() => onClickNext(selectedWrongAnswer === null)}
                 >
-                  Next Question
+                  Дараагийн асуулт
                 </Button>
               </motion.div>
             )}
