@@ -3,12 +3,11 @@
 import Chapters, { IChapter } from "@/components/chapters";
 import { Button } from "@/components/ui/button";
 import { ArrowRightIcon } from "lucide-react";
+import { User } from "next-auth";
 import { AdapterUser } from "next-auth/adapters";
-import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { logout } from "./(auth)/login/action";
-import { User } from "next-auth";
 
 interface Props {
   chapters: IChapter[];

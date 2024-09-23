@@ -1,11 +1,10 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
 import { ChevronDown, ChevronRight } from "lucide-react";
-import { Button } from "../ui/button";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import { User } from "next-auth";
+import { useRouter } from "next/navigation";
+import React, { useMemo, useState } from "react";
+import { Button } from "../ui/button";
 
 interface IChapter {
   id: number;

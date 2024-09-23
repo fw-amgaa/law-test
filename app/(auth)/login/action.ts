@@ -2,8 +2,6 @@
 
 import { signIn, signOut } from "@/auth";
 import { AuthError } from "next-auth";
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 
 export async function login(e: FormData) {
   try {
