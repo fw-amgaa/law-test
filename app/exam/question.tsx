@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import {
@@ -36,14 +35,15 @@ interface Props {
   question: IQuestion;
   onClickNext: (isCorrect: boolean) => void;
   chapterName: string;
+  totalQuestionsCount: number;
 }
 
 export default function Question({
   question,
   onClickNext,
   chapterName,
+  totalQuestionsCount,
 }: Props) {
-  const router = useRouter();
   const [selectedAnswer, setSelectedAnswer] = useState<IAnswer | null>(null);
   const [selectedCorrectAnswer, setSelectedCorrectAnswer] =
     useState<IAnswer | null>(null);
@@ -85,6 +85,10 @@ export default function Question({
         <Badge variant="outline" className="text-sm bg-white">
           Chapter: {chapterName}
         </Badge>
+
+        <Badge variant="outline" className="text-sm bg-white">
+          Total questions: {totalQuestionsCount}
+        </Badge>
       </motion.div>
       <Card className="w-full">
         <CardHeader>
@@ -98,7 +102,7 @@ export default function Question({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-4"
+              className="grid grid-cols-1 gap-4"
             >
               {question.answer_list.map((answer, index) => (
                 <AnswerBox
@@ -166,7 +170,7 @@ function AnswerBox({
         onClick={onClick}
         disabled={disabled}
         className={cn(
-          "w-full justify-start text-left h-auto py-3 text-black",
+          "w-full justify-start text-left h-auto py-3 text-black whitespace-normal",
           correct && "border-green-500 bg-green-100 hover:bg-green-200",
           wrong && "border-red-500 bg-red-100 hover:bg-red-200"
         )}
