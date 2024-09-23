@@ -3,11 +3,17 @@
 import { signIn, signOut } from "@/auth";
 import { AuthError } from "next-auth";
 
-export async function login(e: FormData) {
+export async function login({
+  phone,
+  password,
+}: {
+  phone: string;
+  password: string;
+}) {
   try {
     await signIn("credentials", {
-      phone: e.get("phone"),
-      password: e.get("password"),
+      phone,
+      password,
       redirect: false,
     });
   } catch (error) {

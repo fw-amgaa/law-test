@@ -5,6 +5,7 @@ import { User } from "next-auth";
 import { useRouter } from "next/navigation";
 import React, { useMemo, useState } from "react";
 import { Button } from "../ui/button";
+import { Spinner } from "../spinner";
 
 interface IChapter {
   id: number;
@@ -101,6 +102,7 @@ export function ChapterList({
 }) {
   const router = useRouter();
   const [selectedChapter, setSelectedChapter] = useState<IChapter | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const chapterTree = useMemo(() => {
     const tree: { [key: number]: IChapter[] } = {};
@@ -125,6 +127,7 @@ export function ChapterList({
   );
 
   const onClickTakeExam = () => {
+    setLoading(true);
     if (user) {
       router.push(
         "/exam" +
@@ -163,7 +166,7 @@ export function ChapterList({
               </p>
 
               <Button onClick={onClickTakeExam} className="mt-2">
-                Take exam
+                {loading ? <Spinner /> : "Take exam"}
               </Button>
             </div>
           ) : (
