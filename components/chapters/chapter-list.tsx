@@ -113,7 +113,7 @@ export function ChapterList({
       tree[chapter.parent_id].push(chapter);
     });
     return tree;
-  }, []);
+  }, [sampleChapters]);
 
   const renderChapter = (chapter: IChapter) => (
     <ChapterNode
