@@ -14,15 +14,21 @@ import { Label } from "@/components/ui/label";
 import { login } from "./action";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function LoginForm() {
   const { toast } = useToast();
   const router = useRouter();
 
+  const [loading, setLoading] = useState(false);
+
   return (
     <form
       action={async (e) => {
+        setLoading(true);
         const response = await login(e);
+
+        setLoading(false);
 
         if (response?.error) {
           toast({
@@ -66,7 +72,7 @@ export default function LoginForm() {
         </CardContent>
         <CardFooter>
           <Button type="submit" className="w-full">
-            Sign in
+            {loading ? "Loading..." : "Sign in"}
           </Button>
         </CardFooter>
       </Card>
