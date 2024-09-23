@@ -5,6 +5,7 @@ import { ChevronDown, ChevronRight } from "lucide-react";
 import { Button } from "../ui/button";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { User } from "next-auth";
 
 interface IChapter {
   id: number;
@@ -94,10 +95,11 @@ const ChapterNode: React.FC<ChapterNodeProps> = ({
 
 export function ChapterList({
   sampleChapters,
+  user,
 }: {
   sampleChapters: IChapter[];
+  user: User;
 }) {
-  const { data: session } = useSession();
   const router = useRouter();
   const [selectedChapter, setSelectedChapter] = useState<IChapter | null>(null);
 
@@ -124,7 +126,7 @@ export function ChapterList({
   );
 
   const onClickTakeExam = () => {
-    if (session?.user) {
+    if (user) {
       router.push(
         "/exam" +
           "?chapter_id=" +

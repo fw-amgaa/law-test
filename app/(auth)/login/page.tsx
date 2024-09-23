@@ -50,7 +50,7 @@ export default function LoginForm() {
               id="phone"
               type="phone"
               name="phone"
-              placeholder="99119911"
+              placeholder="username"
               required
             />
           </div>

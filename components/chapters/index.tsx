@@ -1,6 +1,7 @@
 "use client";
 
 import { ChapterList } from "@/components/chapters/chapter-list";
+import { User } from "next-auth";
 
 export interface IChapter {
   id: number;
@@ -12,7 +13,13 @@ export interface IChapter {
   parent_id: number;
 }
 
-export default function Chapters({ chapters }: { chapters: IChapter[] }) {
+export default function Chapters({
+  chapters,
+  user,
+}: {
+  chapters: IChapter[];
+  user: User;
+}) {
   return (
     <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
       <div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
@@ -24,7 +31,7 @@ export default function Chapters({ chapters }: { chapters: IChapter[] }) {
           Select a chapter to start taking the exam. Good luck!
         </p>
       </div>
-      <ChapterList sampleChapters={chapters} />
+      <ChapterList user={user} sampleChapters={chapters} />
     </div>
   );
 }

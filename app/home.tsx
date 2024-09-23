@@ -8,13 +8,14 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { logout } from "./(auth)/login/action";
+import { User } from "next-auth";
 
 interface Props {
   chapters: IChapter[];
+  user: User;
 }
 
-export default function HomePage({ chapters }: Props) {
-  const { data: session } = useSession();
+export default function HomePage({ chapters, user }: Props) {
   const router = useRouter();
 
   const features = [
@@ -97,14 +98,13 @@ export default function HomePage({ chapters }: Props) {
             priority.
           </p>
           <div className="items-center justify-center gap-x-3 space-y-3 sm:flex sm:space-y-0 xl:justify-start">
-            <Button>Browse chapters</Button>
-
-            {session?.user.token ? (
+            {user.token ? (
               <div className="flex gap-4 items-center">
                 <Button
                   onClick={async () => {
                     await logout();
-                    session.user = {} as AdapterUser;
+                    router.push("/login");
+                    user = {} as AdapterUser;
                   }}
                   variant={"destructive"}
                 >
@@ -114,7 +114,7 @@ export default function HomePage({ chapters }: Props) {
               </div>
             ) : (
               <Button onClick={() => router.push("/login")} variant={"outline"}>
-                Get access <ArrowRightIcon size={"xs"} className="ml-2" />
+                Log-in <ArrowRightIcon size={"xs"} className="ml-2" />
               </Button>
             )}
           </div>
@@ -172,7 +172,7 @@ export default function HomePage({ chapters }: Props) {
       {/* Background end*/}
 
       <main>
-        <Chapters chapters={chapters} />
+        <Chapters user={user} chapters={chapters} />
       </main>
 
       <footer>

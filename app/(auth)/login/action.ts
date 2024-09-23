@@ -3,6 +3,7 @@
 import { signIn, signOut } from "@/auth";
 import { AuthError } from "next-auth";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export async function login(e: FormData) {
   try {
@@ -30,8 +31,7 @@ export async function login(e: FormData) {
 
 export async function logout() {
   try {
-    await signOut({ redirect: true });
-    revalidatePath("/");
+    await signOut({ redirect: false });
   } catch (error) {
     if (error instanceof Error) {
       const { type, cause } = error as AuthError;
