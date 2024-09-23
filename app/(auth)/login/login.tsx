@@ -47,31 +47,28 @@ export default function Login() {
   return (
     <Card className="w-full max-w-sm">
       <CardHeader>
-        <CardTitle className="text-2xl">Login</CardTitle>
+        <CardTitle className="text-2xl">Нэвтрэх</CardTitle>
         <CardDescription>
-          Enter your email below to login to your account.
+          Таньд өгөгдсөн мэдээллийг ашиглан нэвтэрнэ үү.
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
         <div className="grid gap-2">
-          <Label htmlFor="email">Phone</Label>
-          <Input
-            onChange={(e) => setPhone(e.target.value)}
-            placeholder="username"
-          />
+          <Label htmlFor="email">Нэвтрэх нэр</Label>
+          <Input onChange={(e) => setPhone(e.target.value)} placeholder="Нэр" />
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="password">Password</Label>
+          <Label htmlFor="password">Нууц үг</Label>
           <Input
             type="password"
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="password"
+            placeholder="Нууц үг"
           />
         </div>
       </CardContent>
       <CardFooter>
         <Button disabled={loading} onClick={onClickLogin} className="w-full">
-          {loading ? <Spinner /> : "Sign in"}
+          {loading ? <Spinner /> : "Нэвтрэх"}
         </Button>
       </CardFooter>
     </Card>
