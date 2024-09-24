@@ -84,12 +84,12 @@ export default function Question({
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto p-4">
+    <div className="w-full h-full max-w-3xl mx-auto p-4 pb-8">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="mb-4 flex justify-between items-center"
+        className="mb-4 flex justify-between items-center gap-2"
       >
         <Button
           onClick={() => router.back()}
@@ -110,9 +110,11 @@ export default function Question({
       </motion.div>
       <Card className="w-full">
         <CardHeader>
-          <CardTitle className="text-xl">{question.question}</CardTitle>
+          <CardTitle className="text-xl overflow-y-scroll">
+            {question.question}
+          </CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-4">
           <AnimatePresence mode="wait">
             <motion.div
               key={question.question}
@@ -161,6 +163,8 @@ export default function Question({
           </AnimatePresence>
         </CardFooter>
       </Card>
+
+      <div className="h-4" />
     </div>
   );
 }

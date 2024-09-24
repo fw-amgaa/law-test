@@ -32,8 +32,6 @@ export default function Exam({ questionList, chapterName }: Props) {
   const [correctQuestionCount, setCorrectQuestionCount] = useState(0);
   const [showResult, setShowResult] = useState(false);
 
-  console.log("lits", questionList);
-
   const onClickNext = (isCorrect: boolean) => {
     if (isCorrect) {
       setCorrectQuestionCount((prev) => prev + 1);

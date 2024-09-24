@@ -165,7 +165,11 @@ export function ChapterList({
                 {selectedChapter.chapter_description}
               </p>
 
-              <Button onClick={onClickTakeExam} className="mt-2">
+              <Button
+                disabled={loading}
+                onClick={onClickTakeExam}
+                className="mt-2"
+              >
                 {loading ? <Spinner /> : "Шалгалт өгөх"}
               </Button>
             </div>
