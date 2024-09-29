@@ -21,6 +21,7 @@ export default async function ExamPage({
 
   return (
     <Exam
+      token={session.user.token || ""}
       chapterName={searchParams.chapter_name}
       questionList={questions?.data || []}
     />

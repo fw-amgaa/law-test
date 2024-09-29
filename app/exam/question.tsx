@@ -14,6 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
+import { Spinner } from "@/components/spinner";
 
 export interface IAnswer {
   id: number;
@@ -35,13 +36,15 @@ export interface IQuestion {
 
 interface Props {
   question: IQuestion;
-  onClickNext: (isCorrect: boolean) => void;
+  loading: boolean;
+  onClickNext: (selectedAnswer: IAnswer) => void;
   chapterName: string;
   totalQuestionsCount: number;
 }
 
 export default function Question({
   question,
+  loading,
   onClickNext,
   chapterName,
   totalQuestionsCount,
@@ -154,9 +157,10 @@ export default function Question({
                   </span>
                 </p>
                 <Button
-                  onClick={() => onClickNext(selectedWrongAnswer === null)}
+                  disabled={loading}
+                  onClick={() => onClickNext(selectedAnswer)}
                 >
-                  Дараагийн асуулт
+                  {loading ? <Spinner /> : "Дараагийн асуулт"}
                 </Button>
               </motion.div>
             )}
@@ -193,8 +197,8 @@ function AnswerBox({
         disabled={disabled}
         className={cn(
           "w-full justify-start text-left h-auto py-3 text-black whitespace-normal",
-          correct && "border-green-500 bg-green-100 hover:bg-green-200",
-          wrong && "border-red-500 bg-red-100 hover:bg-red-200"
+          correct && "border-green-500 bg-green-400 hover:bg-green-200",
+          wrong && "border-red-500 bg-red-400 hover:bg-red-200"
         )}
       >
         <span className="font-bold mr-2 text-black">
